@@ -1,5 +1,6 @@
 package com.anma.atl.impl.panels;
 
+import com.atlassian.jira.event.issue.field.CustomFieldUpdatedEvent;
 import com.atlassian.jira.issue.Issue;
 import com.atlassian.jira.plugin.webfragment.contextproviders.AbstractJiraContextProvider;
 import com.atlassian.jira.plugin.webfragment.model.JiraHelper;

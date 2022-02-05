@@ -10,7 +10,7 @@
     <version>1.0.0</version>
 
     <organization>
-        <name>Example Company</name>
+        <name>andrii</name>
         <url>http://www.example.com/</url>
     </organization>
 
@@ -85,6 +85,20 @@
             <groupId>com.atlassian.templaterenderer</groupId>
             <artifactId>atlassian-template-renderer-api</artifactId>
             <version>3.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.2.5.RELEASE</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atlassian.activeobjects</groupId>
+            <artifactId>activeobjects-plugin</artifactId>
+            <version>3.2.2</version>
             <scope>provided</scope>
         </dependency>
 
