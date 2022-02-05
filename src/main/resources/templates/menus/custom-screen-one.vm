@@ -22,6 +22,26 @@
 
             </aui-dropdown-menu>
         </form>
+        <div>
+            <table class="aui">
+                <thead>
+                <tr>
+                    <th>username</th>
+                    <th>action</th>
+                    <th>time</th>
+                </tr>
+                </thead>
+                <tbody>
+                    #foreach($rec in $records)
+                        <tr>
+                            <td>$rec.getUserName()</td>
+                            <td>$rec.getAction()</td>
+                            <td>$rec.getActionTime()</td>
+                        </tr>
+                    #end
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>

@@ -9,8 +9,6 @@ import com.atlassian.jira.issue.MutableIssue;
 import com.atlassian.plugin.spring.scanner.annotation.imports.JiraImport;
 import com.atlassian.sal.api.user.UserManager;
 import com.atlassian.sal.api.web.context.HttpContext;
-import org.ofbiz.core.entity.GenericEntityException;
-import org.ofbiz.core.entity.GenericValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;
@@ -19,9 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FieldUpdatedEvent implements InitializingBean, DisposableBean {
+public class CsFieldUpdatedEvent implements InitializingBean, DisposableBean {
 
-    private final Logger LOG = LoggerFactory.getLogger(FieldUpdatedEvent.class);
+    private final Logger LOG = LoggerFactory.getLogger(CsFieldUpdatedEvent.class);
 
     private final EventPublisher eventPublisher;
     private final UserManager userManager;
@@ -30,11 +28,11 @@ public class FieldUpdatedEvent implements InitializingBean, DisposableBean {
     private final IssueManager issueManager;
 
     @Autowired
-    public FieldUpdatedEvent(@JiraImport EventPublisher eventPublisher,
-                             @JiraImport UserManager userManager,
-                             EventsService eventsService,
-                             @JiraImport HttpContext httpContext,
-                             @JiraImport IssueManager issueManager) {
+    public CsFieldUpdatedEvent(@JiraImport EventPublisher eventPublisher,
+                               @JiraImport UserManager userManager,
+                               EventsService eventsService,
+                               @JiraImport HttpContext httpContext,
+                               @JiraImport IssueManager issueManager) {
         this.eventPublisher = eventPublisher;
         this.userManager = userManager;
         this.eventsService = eventsService;

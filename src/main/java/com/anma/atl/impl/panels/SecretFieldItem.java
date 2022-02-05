@@ -27,6 +27,7 @@ public class SecretFieldItem extends AbstractJiraContextProvider {
         context.put("projectId", projectId);
         context.put("projKey", projKey);
         context.put("projName", projName);
+        context.put("issueKey", currentIssue.getKey());
 
         return context;
     }

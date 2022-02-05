@@ -1,5 +1,6 @@
 package com.anma.atl.impl.menus;
 
+import com.anma.atl.impl.srv.EventsService;
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import com.atlassian.templaterenderer.TemplateRenderer;
 
@@ -14,12 +15,15 @@ import java.util.Map;
 
 public class CustomScreenOne extends HttpServlet {
 
-    @ComponentImport
+
     private final TemplateRenderer templateRenderer;
+    private final EventsService eventsService;
 
     @Inject
-    public CustomScreenOne(TemplateRenderer templateRenderer) {
+    public CustomScreenOne(@ComponentImport TemplateRenderer templateRenderer,
+                           EventsService eventsService) {
         this.templateRenderer = templateRenderer;
+        this.eventsService = eventsService;
     }
 
     @Override
@@ -28,6 +32,7 @@ public class CustomScreenOne extends HttpServlet {
         Map<String, Object> context = new HashMap<>();
 
         context.put("contextPath", req.getContextPath());
+        context.put("records", eventsService.getAll());
 
         templateRenderer.render("templates/menus/custom-screen-one.vm", context, resp.getWriter());
 
