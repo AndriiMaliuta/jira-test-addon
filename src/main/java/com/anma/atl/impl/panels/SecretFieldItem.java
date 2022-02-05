@@ -1,4 +1,4 @@
-package com.anma.atl.impl;
+package com.anma.atl.impl.panels;
 
 import com.atlassian.jira.issue.Issue;
 import com.atlassian.jira.plugin.webfragment.contextproviders.AbstractJiraContextProvider;
@@ -14,9 +14,18 @@ public class SecretFieldItem extends AbstractJiraContextProvider {
     public Map getContextMap(ApplicationUser applicationUser, JiraHelper jiraHelper) {
 
         Map<String, Object> context = new HashMap<>();
+        String contextPath = jiraHelper.getRequest().getContextPath();
+
         Issue currentIssue = (Issue) jiraHelper.getContextParams().get("issue");
 
+        Long projectId = jiraHelper.getProject().getId();
+        String projKey = jiraHelper.getProject().getKey();
+        String projName = jiraHelper.getProject().getName();
 
+        context.put("contextPath", contextPath);
+        context.put("projectId", projectId);
+        context.put("projKey", projKey);
+        context.put("projName", projName);
 
         return context;
     }
