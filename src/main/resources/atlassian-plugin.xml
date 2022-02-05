@@ -28,6 +28,13 @@
 <!--        </init-param>-->
     </servlet>
 
+    <web-panel name="secret-field" i18n-name-key="secret-field.name" key="secret-field" location="atl.jira.view.issue.left.context" weight="800">
+        <description key="secret-field.description">New Secret Field</description>
+        <context-provider class="com.anma.atl.impl.SecretFieldItem"/>
+        <resource name="view" type="velocity" location="templates/secret-field-indicator.vm"/>
+        <label key="secret-field.title"/>
+    </web-panel>
+
     <!-- add our web resources -->
     <web-resource key="jira-test-resources" name="jira-test Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>

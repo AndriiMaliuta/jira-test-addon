@@ -1,1 +1,27 @@
-<h2>Secret Internal Sprint Name</h2>
+<html>
+<head>
+    <title>$i18n.getText("anma.admin.label")</title>
+    <meta name="decorator" content="atl.general" />
+    $webResourceManager.requireResource("com.atlassian.auiplugin:ajs")
+</head>
+<body>
+    <div id="page">
+        <h2>Secret Internal Sprint Name</h2>
+        <form id="admin" class="aui">
+
+            <button class="aui-button aui-dropdown2-trigger" aria-controls="secret-menu-dropdown">
+                Secret menu
+            </button>
+
+            <aui-dropdown-menu id="secret-menu-dropdown">
+                <aui-section label="secret-field">
+                    <aui-item-link href="http://atlassian.com">Atlassian</aui-item-link>
+                    <aui-item-link href="http://news.ycombinator.com">Hacker news</aui-item-link>
+                    <aui-item-link href="http://github.com">Github</aui-item-link>
+                </aui-section>
+
+            </aui-dropdown-menu>
+        </form>
+    </div>
+</body>
+</html>
