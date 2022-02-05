@@ -1,0 +1,41 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="jira-test"/>
+    <resource type="download" name="images/" location="/images"/>
+
+    <customfield-type name="Secret Internal Sprint Name" i18n-name-key="secret-int-sprint-field.name"
+                      key="secret-int-sprint-field"
+                      class="com.anma.atl.impl.SecretSprintName">
+        <description key="secret-int-sprint-field.description">Secret Internal Sprint Plugin</description>
+        <resource name="view" type="velocity" location="/templates/customfields/sprint-secret-field/view.vm"/>
+        <resource name="edit" type="velocity" location="/templates/customfields/sprint-secret-field/edit.vm"/>
+    </customfield-type>
+
+    <servlet name="astound-servlet" key="astound-servlet" class="com.example.myplugins.helloworld.HelloWorldServlet">
+        <description>Says Hello World, Australia or your name.</description>
+        <url-pattern>/helloworld</url-pattern>
+        <init-param>
+            <param-name>defaultName</param-name>
+            <param-value>Australia</param-value>
+        </init-param>
+    </servlet>
+
+    <!-- add our web resources -->
+    <web-resource key="jira-test-resources" name="jira-test Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="jira-test.css" location="/css/jira-test.css"/>
+        <resource type="download" name="jira-test.js" location="/js/jira-test.js"/>
+
+        <context>jira-test</context>
+    </web-resource>
+    
+</atlassian-plugin>
