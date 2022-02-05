@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface EventsService {
 
-    public void createEventRecord(String issueId);
+    public void createEventRecord(String type, String issueId, String userKey, String userName);
     List<IssueEventModel> getAll();
 }

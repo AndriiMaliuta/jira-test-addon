@@ -8,7 +8,13 @@ import net.java.ao.schema.Table;
 @Table("PDEModels")
 public interface IssueEventModel extends Entity {
 
+    void setEventType(String type);
+    String getEventType();
     void setIssueId(String pageName);
     String getIssueId();
+    void setUserKey(String userKey);
+    String getUserKey();
+    void setUserName(String userName);
+    String getUserName();
 
 }

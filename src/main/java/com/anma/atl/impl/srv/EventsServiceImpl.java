@@ -5,6 +5,7 @@ import com.atlassian.activeobjects.external.ActiveObjects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -18,14 +19,16 @@ public class EventsServiceImpl implements EventsService {
     }
 
     @Override
-    public void createEventRecord(String issueId) {
+    public void createEventRecord(String type, String issueId, String userKey, String userName) {
         IssueEventModel model = activeObjects.create(IssueEventModel.class);
+        model.setIssueId(issueId);
+        model.setUserKey(issueId);
         model.setIssueId(issueId);
         model.save();
     }
 
     @Override
     public List<IssueEventModel> getAll() {
-        return null;
+        return Arrays.asList(activeObjects.find(IssueEventModel.class));
     }
 }
