@@ -5,7 +5,7 @@ import net.java.ao.Preload;
 import net.java.ao.schema.Table;
 
 @Preload
-@Table("jira-custom-field-updates")
+@Table("ANMCustomUpdates")
 public interface IssueEventModel extends Entity {
 
     void setEventType(String type);

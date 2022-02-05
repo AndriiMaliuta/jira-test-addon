@@ -35,6 +35,11 @@
         <label key="secret-field.title"/>
     </web-panel>
 
+    <ao key="ao-module">
+        <description>AO issue custom field changes model</description>
+        <entity>com.anma.atl.impl.models.IssueEventModel</entity>
+    </ao>
+
     <!-- add our web resources -->
     <web-resource key="jira-test-resources" name="jira-test Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
