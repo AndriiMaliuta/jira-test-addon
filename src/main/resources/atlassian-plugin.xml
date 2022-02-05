@@ -19,13 +19,13 @@
         <resource name="edit" type="velocity" location="/templates/customfields/sprint-secret-field/edit.vm"/>
     </customfield-type>
 
-    <servlet name="astound-servlet" key="astound-servlet" class="com.example.myplugins.helloworld.HelloWorldServlet">
-        <description>Says Hello World, Australia or your name.</description>
-        <url-pattern>/helloworld</url-pattern>
-        <init-param>
-            <param-name>defaultName</param-name>
-            <param-value>Australia</param-value>
-        </init-param>
+    <servlet name="menu-servlet-1" key="menu-servlet-1" class="com.anma.atl.impl.menus.CustomScreenOne">
+        <description>menu-servlet-1</description>
+        <url-pattern>/menus/screen1</url-pattern>
+<!--        <init-param>-->
+<!--            <param-name>defaultName</param-name>-->
+<!--            <param-value>Australia</param-value>-->
+<!--        </init-param>-->
     </servlet>
 
     <!-- add our web resources -->

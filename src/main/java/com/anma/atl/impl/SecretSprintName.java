@@ -18,15 +18,14 @@ public class SecretSprintName extends AbstractSingleFieldType<String> {
         super(customFieldValuePersister, genericConfigManager);
     }
 
-
     @Override
     public String getStringFromSingularObject(String s) {
-        return null;
+        return "TEST";
     }
 
     @Override
     public String getSingularObjectFromString(String s) throws FieldValidationException {
-        return null;
+        return "TEST";
     }
 
     @Override
@@ -42,13 +41,13 @@ public class SecretSprintName extends AbstractSingleFieldType<String> {
     @Nullable
     @Override
     protected Object getDbValueFromObject(String s) {
-        return null;
+        return new String("TEST");
     }
 
     @Nullable
     @Override
     protected String getObjectFromDbValue(@Nonnull Object o) throws FieldValidationException {
-        return null;
+        return "TEST";
     }
 
 
