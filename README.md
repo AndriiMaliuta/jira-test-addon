@@ -1,4 +1,8 @@
-You have successfully created an Atlassian Plugin!
+## Atlassian Jira Test Add-on
+
+Sample add-on for Atlassian Jira with 1 custom field type and admin menu.
+
+=============
 
 Here are the SDK commands you'll use immediately:
 

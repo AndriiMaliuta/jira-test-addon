@@ -10,7 +10,6 @@ import com.atlassian.plugin.spring.scanner.annotation.imports.JiraImport;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.math.BigDecimal;
 
 public class SecretSprintName extends AbstractSingleFieldType<String> {
 
