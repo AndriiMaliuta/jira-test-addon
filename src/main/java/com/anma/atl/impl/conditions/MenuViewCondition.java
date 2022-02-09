@@ -1,6 +1,7 @@
 package com.anma.atl.impl.conditions;
 
 import com.atlassian.jira.bc.issue.IssueService;
+import com.atlassian.jira.issue.Issue;
 import com.atlassian.jira.issue.MutableIssue;
 import com.atlassian.jira.permission.ProjectPermissions;
 import com.atlassian.jira.plugin.webfragment.conditions.AbstractIssueWebCondition;
@@ -13,13 +14,12 @@ import com.atlassian.plugin.spring.scanner.annotation.imports.JiraImport;
 import com.atlassian.plugin.web.baseconditions.BaseCondition;
 import com.opensymphony.module.propertyset.PropertySet;
 import com.opensymphony.workflow.WorkflowException;
+//import com.atlassian.core.user.UserUtils;
 
 import java.util.Map;
 
 public class MenuViewCondition extends AbstractIssueWebCondition {
-
     //AbstractJiraCondition
-
 
     private final PermissionManager permissionManager;
     private final IssueService issueService;
@@ -30,18 +30,27 @@ public class MenuViewCondition extends AbstractIssueWebCondition {
         this.issueService = issueService;
     }
 
+//    @Override
+//    public boolean shouldDisplay(ApplicationUser user, JiraHelper jiraHelper) {
+//
+//        ApplicationUser admin = UserUtils.getUserManager().getUserByName("admin");
+//
+////        super.getIssue(params);
+//
+//        IssueService.IssueResult issueResult = issueService.getIssue(admin, "");
+//        MutableIssue issue = issueResult.getIssue();
+//
+//        permissionManager.hasPermission(ProjectPermissions.ADMINISTER_PROJECTS, issue, admin);
+//
+//    }
+
     @Override
-    public boolean shouldDisplay(ApplicationUser user, JiraHelper jiraHelper) {
-
+    public boolean shouldDisplay(ApplicationUser applicationUser, Issue issue, JiraHelper jiraHelper) {
         ApplicationUser admin = UserUtils.getUserManager().getUserByName("admin");
+//      com.atlassian.core.user.UserUtils userUtils = jiraHelper.getContextParams().get("userutils");
 
-//        super.getIssue(params);
 
-        IssueService.IssueResult issueResult = issueService.getIssue(admin, "");
-        MutableIssue issue = issueResult.getIssue();
-
-        permissionManager.hasPermission(ProjectPermissions.ADMINISTER_PROJECTS, issue, admin);
-
+        return true;
     }
 
 //    @Override
