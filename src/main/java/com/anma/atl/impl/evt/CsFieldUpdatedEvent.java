@@ -9,6 +9,7 @@ import com.atlassian.jira.event.issue.field.CustomFieldUpdatedEvent;
 import com.atlassian.jira.issue.Issue;
 import com.atlassian.jira.issue.IssueManager;
 import com.atlassian.jira.issue.MutableIssue;
+import com.atlassian.jira.issue.history.ChangeItemBean;
 import com.atlassian.jira.user.ApplicationUser;
 import com.atlassian.plugin.spring.scanner.annotation.imports.JiraImport;
 import com.atlassian.sal.api.user.UserManager;
@@ -19,6 +20,12 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class CsFieldUpdatedEvent implements InitializingBean, DisposableBean {
@@ -54,7 +61,7 @@ public class CsFieldUpdatedEvent implements InitializingBean, DisposableBean {
         String userKey = userManager.getRemoteUser().getUserKey().getStringValue();
         String userName = userManager.getRemoteUser().getUsername();
 
-        eventsService.createEventRecord("UPDATE", issueId, userKey, userName);
+        eventsService.createEventRecord("UPDATE", issueId, issue.getKey(), new String[]{}, userKey, userName);
 
         LOG.info("Field " + fieldId + "of Issue " + issueId + " updated");
     }
@@ -65,32 +72,35 @@ public class CsFieldUpdatedEvent implements InitializingBean, DisposableBean {
         String issueId = httpContext.getRequest().getParameter("issueId");
         MutableIssue issue = issueManager.getIssueObject(issueId);
 
-        String fieldId = event.getId();
+        String eventId = event.getId();
         String id = event.getIssueType().getId();
         String description = event.getIssueType().getDescription();
         String userKey = userManager.getRemoteUser().getUserKey().getStringValue();
         String userName = userManager.getRemoteUser().getUsername();
 
+        eventsService.createEventRecord("ISS-UPDATE", issueId, issue.getKey(), new String[]{}, userKey, userName);
 
-        eventsService.createEventRecord("IS-UPDATE", issueId, userKey, userName);
-
-        LOG.info("Field " + fieldId + "of Issue " + issueId + " updated");
+        LOG.info("Type " + issue.getIssueType() + "of Issue " + issueId + " updated");
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        eventPublisher.register(this);
-    }
-
+    // update issue
     @EventListener
     public void handle(IssueChangedEvent event) {
         ApplicationUser user = event.getAuthor().get();
         Issue issue = event.getIssue();
         Long issueId = issue.getId();
+        Collection<ChangeItemBean> changeItems = event.getChangeItems();
+        String[] fields = (String[]) changeItems.stream().map(ChangeItemBean::getField).collect(Collectors.toList()).toArray();
 
-        eventsService.createEventRecord("ISSUE-UPDATE", String.valueOf(issueId), user.getKey(), user.getName());
+        eventsService.createEventRecord("ISSUE-UPDATE", String.valueOf(issueId),
+                issue.getKey(), fields, user.getKey(), user.getName());
 
-        LOG.info("issued " + issue.getKey() + " updated");
+        LOG.info("Issue " + issue.getKey() + " updated");
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        eventPublisher.register(this);
     }
 
     @Override

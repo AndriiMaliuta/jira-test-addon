@@ -25,6 +25,8 @@
                 <thead>
                 <tr>
                     <th>username</th>
+                    <th>issue</th>
+                    <th>fields</th>
                     <th>action</th>
                     <th>time</th>
                 </tr>
@@ -33,8 +35,10 @@
                     #foreach($rec in $records)
                         <tr>
                             <td>$rec.getUserName()</td>
-                            <td>$rec.getAction()</td>
-                            <td>$rec.getActionTime()</td>
+                            <td>$rec.getIssueKey()</td>
+                            <td>$rec.fields[0]</td>
+                            <td>$rec.getEventType()</td>
+                            <td>$rec.getTime()</td>
                         </tr>
                     #end
                 </tbody>

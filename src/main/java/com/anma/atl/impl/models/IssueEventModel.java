@@ -12,9 +12,13 @@ public interface IssueEventModel extends Entity {
     String getEventType();
     void setIssueId(String pageName);
     String getIssueId();
+    void setIssueKey(String issueKey);
+    String getIssueKey();
     void setUserKey(String userKey);
     String getUserKey();
     void setUserName(String userName);
     String getUserName();
+    void setTime(String time);
+    String getTime();
 
 }

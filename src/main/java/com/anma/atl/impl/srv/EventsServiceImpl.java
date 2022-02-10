@@ -20,12 +20,15 @@ public class EventsServiceImpl implements EventsService {
     }
 
     @Override
-    public void createEventRecord(String type, String issueId, String userKey, String userName) {
+    public void createEventRecord(String type, String issueId, String issKey, String[] field, String userKey, String userName) {
+
         IssueEventModel model = activeObjects.create(IssueEventModel.class);
-        model.setEventType("UPDATED");
+        model.setEventType(type);
         model.setIssueId(issueId);
+        model.setIssueKey(issKey);
         model.setUserKey(userKey);
         model.setUserName(userName);
+
         model.save();
     }
 
