@@ -38,7 +38,11 @@
                             <td>$rec.getIssueKey()</td>
                             <td>$rec.getFields()</td>
                             <td>$rec.getEventType()</td>
-                            <td>$rec.getTime()</td>
+                            <td>
+                                #if($rec.getTime())
+                                    $rec.getTime()
+                                #end
+                            </td>
                         </tr>
                     #end
                 </tbody>
