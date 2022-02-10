@@ -14,6 +14,8 @@ public interface IssueEventModel extends Entity {
     String getIssueId();
     void setIssueKey(String issueKey);
     String getIssueKey();
+    void setFields(String fields);
+    String getFields();
     void setUserKey(String userKey);
     String getUserKey();
     void setUserName(String userName);

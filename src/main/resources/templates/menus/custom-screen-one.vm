@@ -24,11 +24,11 @@
             <table class="aui">
                 <thead>
                 <tr>
-                    <th>username</th>
-                    <th>issue</th>
-                    <th>fields</th>
-                    <th>action</th>
-                    <th>time</th>
+                    <th>Username</th>
+                    <th>Issue</th>
+                    <th>Fields</th>
+                    <th>Action</th>
+                    <th>Time</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,7 +36,7 @@
                         <tr>
                             <td>$rec.getUserName()</td>
                             <td>$rec.getIssueKey()</td>
-                            <td>$rec.fields[0]</td>
+                            <td>$rec.getFields()</td>
                             <td>$rec.getEventType()</td>
                             <td>$rec.getTime()</td>
                         </tr>

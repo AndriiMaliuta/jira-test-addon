@@ -21,10 +21,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
@@ -52,6 +50,7 @@ public class CsFieldUpdatedEvent implements InitializingBean, DisposableBean {
     }
 
     @EventListener
+
     public void handleEvent(CustomFieldUpdatedEvent event) {
         String issueId = httpContext.getRequest().getParameter("issueId");
         MutableIssue issue = issueManager.getIssueObject(issueId);
@@ -61,7 +60,8 @@ public class CsFieldUpdatedEvent implements InitializingBean, DisposableBean {
         String userKey = userManager.getRemoteUser().getUserKey().getStringValue();
         String userName = userManager.getRemoteUser().getUsername();
 
-        eventsService.createEventRecord("UPDATE", issueId, issue.getKey(), new String[]{}, userKey, userName);
+        eventsService.createEventRecord("UPDATE", issueId, issue.getKey(), new String[]{}, userKey,
+                userName, LocalDateTime.now().toString());
 
         LOG.info("Field " + fieldId + "of Issue " + issueId + " updated");
     }
@@ -78,7 +78,8 @@ public class CsFieldUpdatedEvent implements InitializingBean, DisposableBean {
         String userKey = userManager.getRemoteUser().getUserKey().getStringValue();
         String userName = userManager.getRemoteUser().getUsername();
 
-        eventsService.createEventRecord("ISS-UPDATE", issueId, issue.getKey(), new String[]{}, userKey, userName);
+        eventsService.createEventRecord("ISS-UPDATE", issueId, issue.getKey(), new String[]{}, userKey,
+                userName, LocalDateTime.now().toString());
 
         LOG.info("Type " + issue.getIssueType() + "of Issue " + issueId + " updated");
     }
@@ -90,10 +91,11 @@ public class CsFieldUpdatedEvent implements InitializingBean, DisposableBean {
         Issue issue = event.getIssue();
         Long issueId = issue.getId();
         Collection<ChangeItemBean> changeItems = event.getChangeItems();
-        String[] fields = (String[]) changeItems.stream().map(ChangeItemBean::getField).collect(Collectors.toList()).toArray();
+        List<String> fields = changeItems.stream().map(ChangeItemBean::getField).collect(Collectors.toList());
+        String [] strArr = new String[1];
 
         eventsService.createEventRecord("ISSUE-UPDATE", String.valueOf(issueId),
-                issue.getKey(), fields, user.getKey(), user.getName());
+                issue.getKey(), fields.toArray(strArr), user.getKey(), user.getName(), LocalDateTime.now().toString());
 
         LOG.info("Issue " + issue.getKey() + " updated");
     }

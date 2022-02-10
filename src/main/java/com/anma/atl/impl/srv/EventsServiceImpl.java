@@ -20,14 +20,19 @@ public class EventsServiceImpl implements EventsService {
     }
 
     @Override
-    public void createEventRecord(String type, String issueId, String issKey, String[] field, String userKey, String userName) {
+    public void createEventRecord(String type, String issueId, String issKey, String[] field,
+                                  String userKey, String userName, String time) {
+
+//        Arrays.stream(activeObjects.find(IssueEventModel.class)).forEach(activeObjects::delete);
 
         IssueEventModel model = activeObjects.create(IssueEventModel.class);
         model.setEventType(type);
         model.setIssueId(issueId);
         model.setIssueKey(issKey);
+        model.setFields(String.join(",", field));
         model.setUserKey(userKey);
         model.setUserName(userName);
+        model.setTime(time);
 
         model.save();
     }
