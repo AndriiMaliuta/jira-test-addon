@@ -65,5 +65,5 @@
     // console.log(AJS.versionDetails)
     // console.log(AJS.versionDetails.major)
 </script>
-<script src="/download/resources/com.anma.atl.impl.jira-test/js/frontend.js"></script>
+<script src="/download/resources/com.anma.atl.impl.jira-test/js/src/frontend.js"></script>
 </html>
