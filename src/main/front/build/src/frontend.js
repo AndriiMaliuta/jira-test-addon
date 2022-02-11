@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "./_snowpack/pkg/react.js";
+import React, {useState, useEffect} from "../_snowpack/pkg/react.js";
 function Frontend() {
   const [data, setData] = useState([]);
   useEffect(() => {
