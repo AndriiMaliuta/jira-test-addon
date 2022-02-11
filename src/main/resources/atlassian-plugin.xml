@@ -10,6 +10,8 @@
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="jira-test"/>
     <resource type="download" name="images/" location="/images"/>
+    <resource type="download" name="js/" location="/js"/>
+    <resource type="download" name="jira-test.css" location="/css/jira-test.css"/>
 
     <customfield-type name="Secret Internal Sprint Name" i18n-name-key="secret-int-sprint-field.name"
                       key="secret-int-sprint-field"

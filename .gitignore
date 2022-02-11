@@ -2,9 +2,11 @@
 # Compiled class file
 .idea
 target
+node_modules
 *.class
 # Log file
 *.log
+
 
 # BlueJ files
 *.ctxt
