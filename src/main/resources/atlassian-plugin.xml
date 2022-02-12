@@ -10,8 +10,7 @@
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="jira-test"/>
     <resource type="download" name="images/" location="/images"/>
-    <resource type="download" name="js/" location="/js"/>
-    <resource type="download" name="jira-test.css" location="/css/jira-test.css"/>
+<!--    <resource type="download" name="js/" location="/js"/>-->
 
     <customfield-type name="Secret Internal Sprint Name" i18n-name-key="secret-int-sprint-field.name"
                       key="secret-int-sprint-field"
@@ -48,9 +47,12 @@
         
         <resource type="download" name="jira-test.css" location="/css/jira-test.css"/>
         <resource type="download" name="jira-test.js" location="/js/jira-test.js"/>
-        <resource type="download" name="require-test.js" location="/js/require-test.js"/>
 
         <context>jira-test</context>
+    </web-resource>
+
+    <web-resource key="require-test" name="require-test" >
+        <resource type="download" name="require-test.js" location="resources/js/require-test.js" />
     </web-resource>
     
 </atlassian-plugin>

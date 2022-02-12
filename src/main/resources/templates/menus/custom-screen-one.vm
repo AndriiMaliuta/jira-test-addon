@@ -1,79 +1,86 @@
 <html>
 <head>
     <title>$i18n.getText("anma.admin.label")</title>
-    <meta name="decorator" content="atl.general" />
-##    $webResourceManager.requireResource("com.atlassian.auiplugin:ajs")
-    $webResourceManager.requireResource("com.anma.atl.impl.jira-test/js/require-test.js")
+    <meta name="decorator" content="atl.general"/>
+    ##    $webResourceManager.requireResource("com.atlassian.auiplugin:ajs")
+    $webResourceManager.requireWebResource("com.anma.atl.jira-test:require-test")
+    $webResourceManager.requireResource("com.anma.atl.jira-test:require-test")
     ##    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@atlassian/aui@8.5.1/dist/aui/aui-prototyping.css"/>
     ##    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     ##    <script src="https://cdnjs.cloudflare.com/ajax/libs/sinon.js/1.15.4/sinon.js"></script>
     ##    <script src="https://unpkg.com/@atlassian/aui@8.5.1/dist/aui/aui-prototyping.js"></script>
 </head>
 <body>
-    <div id="page" style="height: 800px">
-        <h2>Secret Internal Sprint Name</h2>
-        <form class="aui">
-            <aui-label for="sync-product-single-select">Select a field:</aui-label>
-            <p>
-                <aui-select
-                        id="secret-single-select"
-                        name="secret-single-select"
-                        placeholder="Select a field"
-                >
-                    <aui-option>$projectId</aui-option>
-                    <aui-option>$projKey</aui-option>
-                </aui-select>
-            </p>
-        </form>
-        <div>
-            <table class="aui">
-                <thead>
+<div id="page" style="height: 800px">
+    <h2>Secret Internal Sprint Name</h2>
+    <form class="aui">
+        <aui-label for="sync-product-single-select">Select a field:</aui-label>
+        <p>
+            <aui-select
+                    id="secret-single-select"
+                    name="secret-single-select"
+                    placeholder="Select a field"
+            >
+                <aui-option>$projectId</aui-option>
+                <aui-option>$projKey</aui-option>
+            </aui-select>
+        </p>
+    </form>
+    <div>
+        <table class="aui">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>Issue</th>
+                <th>Fields</th>
+                <th>Action</th>
+                <th>Time</th>
+            </tr>
+            </thead>
+            <tbody>
+                #foreach($rec in $records)
                 <tr>
-                    <th>Username</th>
-                    <th>Issue</th>
-                    <th>Fields</th>
-                    <th>Action</th>
-                    <th>Time</th>
+                    <td>$rec.getUserName()</td>
+                    <td>$rec.getIssueKey()</td>
+                    <td>$rec.getFields()</td>
+                    <td>$rec.getEventType()</td>
+                    <td>
+                        #if($rec.getTime())
+                            $rec.getTime()
+                        #end
+                    </td>
                 </tr>
-                </thead>
-                <tbody>
-                    #foreach($rec in $records)
-                        <tr>
-                            <td>$rec.getUserName()</td>
-                            <td>$rec.getIssueKey()</td>
-                            <td>$rec.getFields()</td>
-                            <td>$rec.getEventType()</td>
-                            <td>
-                                #if($rec.getTime())
-                                    $rec.getTime()
-                                #end
-                            </td>
-                        </tr>
-                    #end
-                </tbody>
-            </table>
-        </div>
+                #end
+            </tbody>
+        </table>
     </div>
+</div>
+<div>
+    <img width="15%" height="15%" src="/download/resources/com.anma.atl.jira-test/images/pluginIcon.png" alt="cust-logo">
+</div>
 <div id="react-root"></div>
 
-    <script>
-        window.onload = (event) => {
-            const metas = document.querySelectorAll('meta');
-            for (let m of metas) {
-                if (m.getAttribute('name') === 'ajsVersion') {
-                    m.content = AJS.versionDetails.major;
-                }
+<script type="text/javascript">
+    window.onload = (event) => {
+        const metas = document.querySelectorAll('meta');
+        for (let m of metas) {
+            if (m.getAttribute('name') === 'ajsVersion') {
+                // m.content = AJS.versionDetails.major;
+                console.log(">>> AJS is " + m.content)
             }
-        };
-        console.log("inside 'custom-screen-one' menu")
-        console.log(AJS)
-        console.log(AJS.versionDetails)
-        // console.log(AJS.versionDetails.major)
-    </script>
-        <script src="/download/resources/com.anma.atl.impl.jira-test/js/src/frontend.js"></script>
-        <script src="/js/src/frontend.js"></script>
-        <script src="js/src/frontend.js"></script>
-##    <script src="com.anma.atl.impl.jira-test/js/src/frontend.js"></script>
+        }
+    };
+    console.log(">>>>>>>>>>> inside 'custom-screen-one' menu")
+    // console.log(AJS)
+    // console.log(AJS.versionDetails)
+    // console.log(AJS.versionDetails.major)
+</script>
+<script src="/download/resources/com.anma.atl.jira-test/js/src/frontend.js"></script>
+<script src="/download/resources/com.anma.atl.jira-test/js/require-test.js"></script>
+##<script src="com.anma.atl.jira-test/js/src/frontend.js"></script>
+##<script src="/js/src/frontend.js"></script>
+##<script src="js/src/frontend.js"></script>
+
 </body>
 
 </html>

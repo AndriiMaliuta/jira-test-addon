@@ -4,7 +4,7 @@ import Button from "../_snowpack/pkg/@atlaskit/button.js";
 function Frontend() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    console.log("test");
+    console.log(">>>>>> REACT test");
     setData([1, 2, 3]);
   }, []);
   return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(Button, null, "Click"));

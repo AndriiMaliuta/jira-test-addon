@@ -1,1 +1,1 @@
-console.log("Hello from WEB Resource atlas-xml")
+console.log(">>>>>>>>>>> jira-test.js - Hello from WEB Resource atlas-xml")
