@@ -2,7 +2,12 @@
 <head>
     <title>$i18n.getText("anma.admin.label")</title>
     <meta name="decorator" content="atl.general" />
-    $webResourceManager.requireResource("com.atlassian.auiplugin:ajs")
+##    $webResourceManager.requireResource("com.atlassian.auiplugin:ajs")
+    $webResourceManager.requireResource("com.anma.atl.impl.jira-test/js/require-test.js")
+    ##    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@atlassian/aui@8.5.1/dist/aui/aui-prototyping.css"/>
+    ##    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    ##    <script src="https://cdnjs.cloudflare.com/ajax/libs/sinon.js/1.15.4/sinon.js"></script>
+    ##    <script src="https://unpkg.com/@atlassian/aui@8.5.1/dist/aui/aui-prototyping.js"></script>
 </head>
 <body>
     <div id="page" style="height: 800px">
@@ -50,21 +55,25 @@
         </div>
     </div>
 <div id="react-root"></div>
+
+    <script>
+        window.onload = (event) => {
+            const metas = document.querySelectorAll('meta');
+            for (let m of metas) {
+                if (m.getAttribute('name') === 'ajsVersion') {
+                    m.content = AJS.versionDetails.major;
+                }
+            }
+        };
+        console.log("inside 'custom-screen-one' menu")
+        console.log(AJS)
+        console.log(AJS.versionDetails)
+        // console.log(AJS.versionDetails.major)
+    </script>
+        <script src="/download/resources/com.anma.atl.impl.jira-test/js/src/frontend.js"></script>
+        <script src="/js/src/frontend.js"></script>
+        <script src="js/src/frontend.js"></script>
+##    <script src="com.anma.atl.impl.jira-test/js/src/frontend.js"></script>
 </body>
 
-<script>
-    window.onload = (event) => {
-        const metas = document.querySelectorAll('meta');
-        for (let m of metas) {
-            if (m.getAttribute('name') === 'ajsVersion') {
-                m.content = AJS.versionDetails.major;
-            }
-        }
-    };
-
-    // console.log(AJS)
-    // console.log(AJS.versionDetails)
-    // console.log(AJS.versionDetails.major)
-</script>
-<script src="/download/resources/com.anma.atl.impl.jira-test/js/src/frontend.js"></script>
 </html>

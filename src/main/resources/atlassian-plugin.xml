@@ -48,6 +48,7 @@
         
         <resource type="download" name="jira-test.css" location="/css/jira-test.css"/>
         <resource type="download" name="jira-test.js" location="/js/jira-test.js"/>
+        <resource type="download" name="require-test.js" location="/js/require-test.js"/>
 
         <context>jira-test</context>
     </web-resource>

@@ -1,0 +1,1 @@
+console.log("Hello from WEB Resource atlas-xml")
