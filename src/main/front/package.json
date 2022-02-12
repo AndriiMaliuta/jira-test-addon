@@ -1,5 +1,7 @@
 {
   "name": "jira-test-frontend",
+  "description": "jira test add-on frontend",
+  "license": "MIT",
   "devDependencies": {
     "snowpack": "^3.8.8"
   },

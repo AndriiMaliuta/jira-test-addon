@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react"
+import ReactDOM from 'react-dom';
 
 function Frontend() {
 
@@ -15,4 +16,4 @@ function Frontend() {
 
 export default Frontend
 
-
+ReactDOM.render(<Frontend/>, document.querySelector('#react-root'))

@@ -23,7 +23,7 @@
 
     <servlet name="menu-servlet-1" key="menu-servlet-1" class="com.anma.atl.impl.menus.CustomScreenOne">
         <description>menu-servlet-1</description>
-        <url-pattern>/menus/screen1</url-pattern>
+            <url-pattern>/menus/screen1</url-pattern>
 <!--        <init-param>-->
 <!--            <param-name>defaultName</param-name>-->
 <!--            <param-value>Australia</param-value>-->
