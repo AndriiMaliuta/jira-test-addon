@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react"
 import ReactDOM from 'react-dom';
+import Button from '@atlaskit/button';
 
 function Frontend() {
 
@@ -10,7 +11,7 @@ function Frontend() {
         setData([1,2,3])
     }, [])
 
-    return <div>TEST</div>
+    return <div><Button>Click</Button></div>
 
 }
 
