@@ -4,6 +4,7 @@
     <meta name="decorator" content="atl.general"/>
     ##    $webResourceManager.requireResource("com.atlassian.auiplugin:ajs")
     $webResourceManager.requireWebResource("com.anma.atl.jira-test:require-test")
+    $webResourceManager.requireWebResource("com.anma.atl.jira-test:jira-test-resources")
     $webResourceManager.requireResource("com.anma.atl.jira-test:require-test")
     ##    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@atlassian/aui@8.5.1/dist/aui/aui-prototyping.css"/>
     ##    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -73,10 +74,11 @@
     console.log(">>>>>>>>>>> inside 'custom-screen-one' menu")
     // console.log(AJS)
     // console.log(AJS.versionDetails)
-    // console.log(AJS.versionDetails.major)
 </script>
 <script src="/download/resources/com.anma.atl.jira-test/js/src/frontend.js"></script>
 <script src="/download/resources/com.anma.atl.jira-test/js/require-test.js"></script>
+<script src="jira-test.js"></script>
+<script src="/jira-test.js"></script>
 ##<script src="com.anma.atl.jira-test/js/src/frontend.js"></script>
 ##<script src="/js/src/frontend.js"></script>
 ##<script src="js/src/frontend.js"></script>
