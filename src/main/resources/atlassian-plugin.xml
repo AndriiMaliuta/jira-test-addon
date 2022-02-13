@@ -10,10 +10,10 @@
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="jira-test"/>
     <resource type="download" name="images/" location="/images"/>
-    <resource type="download" name="require-res" location="/js/require-test.js"/>
-    <resource type="download" name="require-res" location="/js/require-test.js"/>
-    <resource type="download" name="require-res" location="com.anma.atl.jira-test:require-test/js/require-test.js"/>
-    <resource type="download" name="require-res" location="com.anma.atl.jira-test/js/require-test.js"/>
+<!--    <resource type="download" name="require-res1" location="/js/require-test.js"/>-->
+<!--    <resource type="download" name="require-res2" location="/js/require-test.js"/>-->
+<!--    <resource type="download" name="require-res3" location="com.anma.atl.jira-test:require-test/js/require-test.js"/>-->
+<!--    <resource type="download" name="require-res4" location="com.anma.atl.jira-test/js/require-test.js"/>-->
 
     <customfield-type name="Secret Internal Sprint Name" i18n-name-key="secret-int-sprint-field.name"
                       key="secret-int-sprint-field"
@@ -54,8 +54,11 @@
         <context>jira-test</context>
     </web-resource>
 
-    <web-resource key="require-test" name="require-test" >
+    <web-resource key="require-test-resource" name="require-test-resource" >
         <resource type="download" name="require-test.js" location="resources/js/require-test.js" />
+<!--        <resource type="download" name="require-test.js" location="resources/js/require-test.js" />-->
+        <context>jira-test</context>
+<!--        <context>com.acme.plugin.fancy-context</context>-->
     </web-resource>
     
 </atlassian-plugin>
